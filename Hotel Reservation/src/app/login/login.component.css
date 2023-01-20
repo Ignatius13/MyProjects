@@ -1,0 +1,26 @@
+input {
+  width: 270px;
+}
+.back-image {
+  background-image: url("https://as2.ftcdn.net/v2/jpg/03/98/39/69/1000_F_398396995_FF2Y8YttChqcbYEv9SFydHA2w7OphMfm.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+.bg-heading {
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+}
+
+button {
+  width: 300px;
+  background-color: #779bd1;
+  font-weight: 400;
+  border-width: 0px;
+  margin-right: 820px;
+  margin-top: 15px;
+}
+.vl {
+  border-left: 3px solid white;
+  height: 400px;
+}

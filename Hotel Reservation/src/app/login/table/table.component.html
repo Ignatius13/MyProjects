@@ -1,0 +1,91 @@
+<div>
+  <mat-toolbar class="bg-container">
+    <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"> -->
+      <!-- <mat-icon>menu</mat-icon> -->
+    
+        <p>Travel Planet</p>
+
+    <button class="btn btn-danger log-button top-button" (click)="backToHome()">Logout</button>
+  
+
+  </mat-toolbar>
+   
+  </div>
+  
+  <div>
+    <h1>
+      My Reservations
+    </h1>
+
+    <div class="search-container">
+      <mat-form-field appearance="fill">
+          <input matInput placeholder="search" autocomplete="off" (keyup)="filterData($event)">
+      </mat-form-field>
+  </div>
+
+  <div class="button-align">
+   <button  mat-raised-button color="accent" class="btn btn-success add-button" (click)="openDialog()">Add </button>
+  </div>
+</div>
+
+
+
+  <table mat-table [dataSource]="datasource" class="mat-elevation-z8" matSort (matSortChange)="announceSortChange($event)">
+  
+    <ng-container matColumnDef="ReservationId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ReservationId</th>
+      <td mat-cell *matCellDef="let element"> {{element.ReservationId}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Hotel">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Hotel </th>
+      <td mat-cell *matCellDef="let element"> {{element.Hotel}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Arrival">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Arrival </th>
+      <td mat-cell *matCellDef="let element"> {{element.Arrival | date}} </td>
+    </ng-container>
+  
+
+    <ng-container matColumnDef="Departure">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Departure </th>
+      <td mat-cell *matCellDef="let element"> {{element.Departure | date}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Type">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Guest">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Guest </th>
+      <td mat-cell *matCellDef="let element"> {{element.Guest}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.Price | currency}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="Manage">
+      <th mat-header-cell *matHeaderCellDef> Manage </th>
+      <td mat-cell *matCellDef="let element"> <button class="btn btn-primary" (click)="edit(element)">Edit</button>| 
+        <button class="btn btn-danger" (click)="pidelete(element.ReservationId)">Delete</button> {{element.Manage}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator
+    [pageSize]="5"
+    [pageSizeOptions]="[2,5, 10, 25, 100]"
+    >
+  </mat-paginator>
+
+  
+  
+
+
+

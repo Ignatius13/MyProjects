@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CRUDDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="CRUDDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Reservations" EntityType="CRUDDBModel.Reservation" />
+    <FunctionImport Name="SP_Getall" ReturnType="Collection(CRUDDBModel.SP_Getall_Result)" />
+    <FunctionImport Name="SP_Insert">
+      <Parameter Name="ReservationId" Mode="In" Type="Int32" />
+      <Parameter Name="Hotel" Mode="In" Type="String" />
+      <Parameter Name="Arrival" Mode="In" Type="DateTime" />
+      <Parameter Name="Departure" Mode="In" Type="DateTime" />
+      <Parameter Name="Type" Mode="In" Type="String" />
+      <Parameter Name="Guest" Mode="In" Type="Int32" />
+      <Parameter Name="Price" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationId" />
+    </Key>
+    <Property Name="ReservationId" Type="Int32" Nullable="false" />
+    <Property Name="Hotel" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Arrival" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Departure" Type="DateTime" Precision="0" />
+    <Property Name="Type" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="Guest" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="SP_Getall_Result">
+    <Property Type="Int32" Name="ReservationId" Nullable="false" />
+    <Property Type="String" Name="Hotel" Nullable="true" MaxLength="60" />
+    <Property Type="String" Name="Arrival" Nullable="true" MaxLength="60" />
+    <Property Type="DateTime" Name="Departure" Nullable="true" />
+    <Property Type="String" Name="Type" Nullable="true" MaxLength="60" />
+    <Property Type="Int32" Name="Guest" Nullable="true" />
+    <Property Type="Int32" Name="Price" Nullable="true" />
+  </ComplexType>
+</Schema>

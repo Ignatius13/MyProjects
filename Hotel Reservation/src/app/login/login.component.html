@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row back-image text-center">
+    <div class="col-5 d-flex flex-column justify-content-center">
+      <h1 class="bg-heading">Back Ground</h1>
+      <p class="bg-heading">VECTOR DESIGN</p>
+      <P class="bg-heading">eps.10</P>
+
+    </div>
+    <div class="col-2 d-flex flex-column justify-content-center">
+      <div class="vl"></div>
+    </div>
+    <div class="col-5 d-flex flex-column justify-content-center">
+      <form
+        (ngSubmit)="onFormSubmission(referenceForForm)"
+        #referenceForForm="ngForm"
+      >
+        <div class="form-group">
+          <input
+            type="userName"
+            placeholder="Username"
+            class="form-control"
+            name="userName"
+            ngModel
+            required
+            #refForUserName="ngModel"
+            email
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            class="form-control"
+            name="password"
+            ngModel
+            required
+            #refForPassword="ngModel"
+            password
+          />
+        </div>
+
+        <button class="btn btn-primary" (click)="onFormSubmit()">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

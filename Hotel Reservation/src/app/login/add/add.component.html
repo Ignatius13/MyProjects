@@ -1,0 +1,44 @@
+<button class="btn btn-danger cross" mat-dialog-close (click)="Cancelbtn(add)">X</button>
+
+<form [formGroup]="add">
+  
+
+  <h1>Add Details</h1>
+  <label>Sl_No</label>
+  <input
+    type="number"
+    placeholder="Sl_No"
+    formControlName="ReservationId"
+  /><br /><br />
+
+  <label>Hotel</label>
+  <input
+    type="text"
+    placeholder="Hotel Name"
+    formControlName="Hotel"
+  /><br /><br />
+
+  <label>Arrival Date</label>
+  <input type="date" formControlName="Arrival" /><br /><br />
+
+  <label>Departure</label>
+  <input type="date" formControlName="Departure" /><br /><br />
+
+  <label for="Type">Choose Type:</label>
+
+  <select formControlName="Type">
+    <option value="Economy">Economy</option>
+    <option value="Suite">Suite</option>
+    <option value="Luxury Suite">Luxury Suite</option>
+    <option value="Double">Double</option></select
+  ><br /><br />
+  <label>Guest</label>
+  <input type="number" formControlName="Guest" /><br /><br />
+
+  <label>Price</label>
+  <input type="number" formControlName="Price" /><br /><br />
+  <div>
+    <button class="btn btn-primary save-button" (click)="save()">Save</button>
+    <button class="btn btn-primary"mat-dialog-close (click)="Cancelbtn(add)">Cancle</button>
+  </div>
+</form>
